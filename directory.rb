@@ -1,41 +1,47 @@
-def input_students
-  puts "Please enter the names of the students"
-  name = gets.chomp
-  puts "Please enter the month of the cohort the student belongs to"
-  puts "To finish, hit return when prompted for name and cohort"
-  cohort = gets.chomp
-  
-  students = []
-  
-  while !cohort.empty? do
-    students << {name: name, cohort: cohort}
-    puts "We now have #{students.count} students"
-    puts "Name: "
-    name = gets.chomp
-    puts "Cohort: "
-    cohort = gets.chomp
-  end
-  students
-end
-  
-def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
-end
+class Directory
 
-def print_names(students)
-  students.each_with_index do |student,index|
-    if student[:name].length < 12
-      puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
+  def initialize
+    @students = []
+  end
+  
+  def input_students
+    puts "Please enter the names of the students"
+    puts "To finish, hit return twice"
+    name = gets.chomp
+    
+    while !name.empty? do
+      @students << {name: name, cohort: :november}
+      puts "#{name} has been added to the directory"
+      puts "We now have #{@students.count}"
+      name = gets.chomp
     end
   end
+    
+  def print_header
+    puts "The students of Villains Academy"
+    puts "-------------"
+  end
+  
+  def print_names
+    @students.each_with_index do |student,index|
+      if student[:name].length < 12
+        puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
+      end
+    end
+  end
+  
+  def print_footer
+    print "Overall, we have #{@students.size} great students"
+  end
+  
+  def start
+    print_header
+    input_students
+    print_names
+    print_footer
+  end
+
 end
 
-def print_footer(names)
-  print "Overall, we have #{names.size} great students"
-end
-
-students = input_students
-print_header
-print_names(students)
-print_footer(students)
+test = Directory.new
+test.start
