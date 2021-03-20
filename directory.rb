@@ -24,9 +24,7 @@ class Directory
   
   def print_names
     @students.each_with_index do |student,index|
-      if student[:name].length < 12
-        puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
-      end
+      puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
     end
   end
   
