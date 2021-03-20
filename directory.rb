@@ -5,15 +5,18 @@ class Directory
   end
   
   def input_students
-    puts "Please enter the names of the students"
-    puts "To finish, hit return twice"
+    puts "Please enter the names of the student"
     name = gets.chomp
+    puts "Please enter the month of the cohort that the student belongs to"
+    month = gets.chomp
+    puts "To finish, leave inputs blank"
     
-    while !name.empty? do
-      @students << {name: name, cohort: :november}
-      puts "#{name} has been added to the directory"
+    while !name.empty? && !month.empty? do
+      @students << {name: name, cohort: month}
+      puts "#{name} from the #{month} cohort has been added to the directory"
       puts "We now have #{@students.count}"
       name = gets.chomp
+      month = gets.chomp
     end
   end
     
@@ -24,7 +27,7 @@ class Directory
   
   def print_names
     @students.each_with_index do |student,index|
-      puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
+      puts "#{index + 1}. #{student[:name]} (#{student[:month].capitalize} cohort)"
     end
   end
   
