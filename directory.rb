@@ -58,21 +58,29 @@ class Directory
       print "Overall, we have #{@students.size} great student"
     end
   end
-  
+
+  def show_students
+    print_header
+    print_names
+    print_footer
+  end
+
+  def print_menu
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. Exit"
+  end
+
   def interactive_menu
     loop do
-      puts "1. Input the students"
-      puts "2. Show the students"
-      puts "9. Exit"
+      print_menu
       selection = gets.chomp
 
       case selection
       when "1"
         input_students
       when "2"
-        print_header
-        print_names
-        print_footer
+        show_students
       when "9"
         exit
       else
