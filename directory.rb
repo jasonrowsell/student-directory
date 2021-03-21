@@ -31,6 +31,16 @@ class Directory
     end
   end
   
+  def print_by_cohort
+    puts "Enter the cohort of students to be displayed"
+    cohort = gets.chomp
+    @students.each_with_index do |student,index|
+      if student[:cohort] == cohort
+        puts "#{index + 1}. #{student[:name]}"
+      end
+    end
+  end
+  
   def print_footer
     print "Overall, we have #{@students.size} great students"
   end
@@ -38,7 +48,7 @@ class Directory
   def start
     print_header
     input_students
-    print_names
+    print_by_cohort
     print_footer
   end
 
