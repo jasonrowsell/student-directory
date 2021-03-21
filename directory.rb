@@ -7,6 +7,7 @@ class Directory
   def input_students
     puts "Please enter the names of the student"
     name = gets.chomp
+    # if first input is empty then program will terminate with error message
       if name.empty?
         abort("ERROR: Input is empty")
       end
@@ -33,11 +34,13 @@ class Directory
   end
   
   def print_names
+    # prints indexed list of students and corresponding cohort
     @students.each_with_index do |student,index|
       puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
     end
   end
   
+  # optional method to group students by cohort
   def print_by_cohort
     puts "Enter the cohort of students to be displayed"
     cohort = gets.chomp
