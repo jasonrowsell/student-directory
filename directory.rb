@@ -14,7 +14,11 @@ class Directory
     while !name.empty? && !month.empty? do
       @students << {name: name, cohort: month}
       puts "#{name} from the #{month} cohort has been added to the directory"
-      puts "We now have #{@students.count}"
+      if @students.count > 1
+        puts "We now have #{@students.count} students"
+      else
+        puts "We now have #{@students.count} student"
+      end
       name = gets.chomp
       month = gets.chomp
     end
@@ -42,7 +46,11 @@ class Directory
   end
   
   def print_footer
-    print "Overall, we have #{@students.size} great students"
+    if @students.size > 1
+      print "Overall, we have #{@students.size} great students"
+    else
+      print "Overall, we have #{@students.size} great student"
+    end
   end
   
   def start
