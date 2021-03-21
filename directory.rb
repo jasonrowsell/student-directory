@@ -59,14 +59,28 @@ class Directory
     end
   end
   
-  def start
-    print_header
-    input_students
-    print_names
-    print_footer
-  end
+  def interactive_menu
+    loop do
+      puts "1. Input the students"
+      puts "2. Show the students"
+      puts "9. Exit"
+      selection = gets.chomp
 
+      case selection
+      when "1"
+        input_students
+      when "2"
+        print_header
+        print_names
+        print_footer
+      when "9"
+        exit
+      else
+        puts "Unknown input, try again"
+      end
+    end
+  end
 end
 
 test = Directory.new
-test.start
+test.interactive_menu
