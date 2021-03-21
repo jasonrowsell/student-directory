@@ -7,6 +7,9 @@ class Directory
   def input_students
     puts "Please enter the names of the student"
     name = gets.chomp
+      if name.empty?
+        abort("ERROR: Input is empty")
+      end
     puts "Please enter the month of the cohort that the student belongs to"
     month = gets.chomp
     puts "To finish, leave inputs blank"
@@ -31,7 +34,7 @@ class Directory
   
   def print_names
     @students.each_with_index do |student,index|
-      puts "#{index + 1}. #{student[:name]} (#{student[:month].capitalize} cohort)"
+      puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
     end
   end
   
@@ -56,7 +59,7 @@ class Directory
   def start
     print_header
     input_students
-    print_by_cohort
+    print_names
     print_footer
   end
 
