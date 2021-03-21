@@ -71,12 +71,8 @@ class Directory
     puts "9. Exit"
   end
 
-  def interactive_menu
-    loop do
-      print_menu
-      selection = gets.chomp
-
-      case selection
+  def process(selection)
+    case selection
       when "1"
         input_students
       when "2"
@@ -86,6 +82,14 @@ class Directory
       else
         puts "Unknown input, try again"
       end
+    end
+  end
+
+  def interactive_menu
+    loop do
+      print_menu
+      selection = gets.chomp
+      process(selection)
     end
   end
 end
