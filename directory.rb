@@ -11,20 +11,20 @@ class Directory
       if name.empty?
         abort("ERROR: Input is empty")
       end
-    puts "Please enter the month of the cohort that the student belongs to"
-    month = gets.chomp
+    puts "Please enter the cohort of the cohort that the student belongs to"
+    cohort = gets.chomp
     puts "To finish, leave inputs blank"
     
-    while !name.empty? && !month.empty? do
-      @students << {name: name, cohort: month}
-      puts "#{name} from the #{month} cohort has been added to the directory"
+    while !name.empty? && !cohort.empty? do
+      @students << {name: name, cohort: cohort}
+      puts "#{name} from the #{cohort} cohort has been added to the directory"
       if @students.count > 1
         puts "We now have #{@students.count} students"
       else
         puts "We now have #{@students.count} student"
       end
       name = gets.chomp
-      month = gets.chomp
+      cohort = gets.chomp
     end
   end
     
@@ -75,6 +75,12 @@ class Directory
     file.close
   end
 
+  # def load_students
+  #   file = File.open ("students.csv", "r")
+  #   file.readlines.each do |line|
+  #     name, cohort = line.chomp.split(',')
+  #     @students << {name: name, cohort: }
+
   def print_menu
     puts "1. Input the students"
     puts "2. Show the students"
@@ -94,7 +100,6 @@ class Directory
         exit
       else
         puts "Unknown input, try again"
-      end
     end
   end
 
