@@ -88,6 +88,8 @@ class Directory
         input_students
       when "2"
         show_students
+      when "3"
+        save_students
       when "9"
         exit
       else
