@@ -16,7 +16,7 @@ class Directory
     puts "To finish, leave inputs blank"
     
     while !name.empty? && !cohort.empty? do
-      @students << {name: name, cohort: cohort}
+      @students << {name: name, cohort: :cohort}
       puts "#{name} from the #{cohort} cohort has been added to the directory"
       if @students.count > 1
         puts "We now have #{@students.count} students"
@@ -75,8 +75,8 @@ class Directory
     file.close
   end
 
-  def load_students
-    file = File.open ("students.csv", "r")
+  def load_students(fileame = "students.csv")
+    file = File.open (filename, "r")
     file.readlines.each do |line|
       name, cohort = line.chomp.split(',')
       @students << {name: name, cohort: cohort.to_sym}
