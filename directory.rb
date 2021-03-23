@@ -9,6 +9,7 @@ class Directory
     puts "2. Show the students"
     puts "3. Save the list to students.csv"
     puts "4. Load the list from students.csv"
+    puts "5. Filter students by cohort"
     puts "9. Exit"
   end
 
@@ -29,6 +30,8 @@ class Directory
         save_students
       when "4"
         load_students
+      when "5"
+        print_by_cohort
       when "9"
         exit
       else
@@ -97,12 +100,17 @@ class Directory
   # optional method to group students by cohort
   def print_by_cohort
     puts "Enter the cohort of students to be displayed"
-    cohort = gets.chomp
-    @students.each_with_index do |student,index|
-      if student[:cohort] == cohort
-        puts "#{index + 1}. #{student[:name]}"
+    cohort = STDIN.gets.chomp
+      puts "The students from the #{cohort} cohort"
+      puts "-------------"
+      counter = 0
+      @students.each_with_index do |student,index|
+        if student[:cohort] == cohort
+          puts "#{index + 1}. #{student[:name]}"
+          counter += 1
+        end
       end
-    end
+      puts "There are #{counter} students from the #{cohort} cohort"
   end
   
   def save_students
