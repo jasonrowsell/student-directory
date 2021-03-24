@@ -42,16 +42,16 @@ class Directory
   def store_info(name, cohort)
     @students << {name: name, cohort: cohort}
   end
-  
+
   def input_students
     puts "Please enter the names of the student"
-    name = STDIN.gets.chomp.strip
+    name = STDIN.gets.chomp.strip.capitalize
     # if first input is empty then program will terminate with error message
       if name.empty?
         abort("Error: Input is empty")
       end
     puts "Please enter the cohort of the cohort that the student belongs to"
-    cohort = STDIN.gets.chomp.strip
+    cohort = STDIN.gets.chomp.strip.capitalize
     puts "To finish, leave inputs blank"
     
     while !name.empty? && !cohort.empty? do
@@ -63,9 +63,9 @@ class Directory
         puts "We now have #{@students.count} student"
       end
       puts "Name: "
-      name = STDIN.gets.chomp.strip
+      name = STDIN.gets.chomp.strip.capitalize
       puts "Cohort: "
-      cohort = STDIN.gets.chomp.strip
+      cohort = STDIN.gets.chomp.strip.capitalize
     end
   end
 
@@ -90,17 +90,15 @@ class Directory
   def print_footer
     if @students.size > 1
       puts "Overall, we have #{@students.size} great students"
-      puts
     else
       puts "Overall, we have #{@students.size} great student"
-      puts
     end
   end
 
-  # optional method to group students by cohort
+  # filters students by cohort
   def print_by_cohort
     puts "Enter the cohort of students to be displayed"
-    cohort = STDIN.gets.chomp
+    cohort = STDIN.gets.chomp.strip.capitalize
       puts "The students from the #{cohort} cohort"
       puts "-------------"
       counter = 0
