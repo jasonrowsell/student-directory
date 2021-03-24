@@ -43,15 +43,19 @@ class Directory
     @students << {name: name, cohort: cohort}
   end
 
+  def get_input
+    variable = STDIN.gets.chomp.strip.capitalize
+  end
+
   def input_students
     puts "Please enter the names of the student"
-    name = STDIN.gets.chomp.strip.capitalize
+    name = get_input
     # if first input is empty then program will terminate with error message
       if name.empty?
         abort("Error: Input is empty")
       end
     puts "Please enter the cohort of the cohort that the student belongs to"
-    cohort = STDIN.gets.chomp.strip.capitalize
+    cohort = get_input
     puts "To finish, leave inputs blank"
     
     while !name.empty? && !cohort.empty? do
@@ -63,9 +67,9 @@ class Directory
         puts "We now have #{@students.count} student"
       end
       puts "Name: "
-      name = STDIN.gets.chomp.strip.capitalize
+      name = get_input
       puts "Cohort: "
-      cohort = STDIN.gets.chomp.strip.capitalize
+      cohort = get_input
     end
   end
 
@@ -98,7 +102,7 @@ class Directory
   # filters students by cohort
   def print_by_cohort
     puts "Enter the cohort of students to be displayed"
-    cohort = STDIN.gets.chomp.strip.capitalize
+    cohort = get_input
       puts "The students from the #{cohort} cohort"
       puts "-------------"
       counter = 0
