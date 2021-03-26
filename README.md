@@ -5,5 +5,6 @@ The student directory script allows you to manage the list of students enrolled 
 ## How to use ##
 
 ```shell
+git clone git@github.com:jasonrowsell/student-directory.git
 ruby directory.rb
 ```
