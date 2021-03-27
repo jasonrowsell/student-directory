@@ -1,8 +1,8 @@
-# Student Directory #
+# Student Directory
 
 The student directory script allows you to manage the list of students enrolled at Villains Academy. 
 
-## How to use ##
+## Intallation and usage
 
 ```shell
 > git clone git@github.com:jasonrowsell/student-directory.git
