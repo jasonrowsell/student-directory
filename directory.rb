@@ -75,7 +75,7 @@ class Directory
 
   def show_students
     print_header
-    print_names
+    print_student_list
     print_footer
   end  
 
@@ -84,7 +84,7 @@ class Directory
     puts "-------------"
   end
   
-  def print_names
+  def print_student_list
     # prints indexed list of students and corresponding cohort
     @students.each_with_index do |student,index|
       puts "#{index + 1}. #{student[:name]} (#{student[:cohort].capitalize} cohort)"
@@ -123,15 +123,16 @@ class Directory
       file.puts csv_line
     end
     file.close
+    puts "Students have been saved to students.csv"
   end
 
   def load_students(filename = "students.csv")
-    file = File.open(filename, "r")
-    file.readlines.each do |line|
-      name, cohort = line.chomp.split(',')
-      store_info(name, cohort)
+    File.open(filename, "r") do |file|
+      file.readlines.each do |line|
+        name, cohort = line.chomp.split(',')
+        store_info(name, cohort)
+      end
     end
-    file.close
   end
 
   def try_load_students
